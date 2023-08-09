@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TasklistController;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -23,10 +24,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::middleware(['auth'])->group(function() {
+    //routes for home
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-    Route::get('/tasklist', [TasklistController::class, 'index'])->name('tasklist.index');
-
+    //routes for users
     Route::get('/user', [UserController::class, 'index'])->name('user.index');
     Route::get("/user/create",[UserController::class, 'create'])->name('user.create');
     Route::get('/user/{user}', [UserController::class, 'show'])->name('user.view');
@@ -34,4 +35,13 @@ Route::middleware(['auth'])->group(function() {
     Route::put('/user/{user}', [UserController::class, 'update'])->name('user.update');
     Route::get('/user/{user}/delete', [UserController::class, 'destroy'])->name('user.delete');
     Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
+
+    //routes for tasklist
+    Route::get('/tasklist', [TasklistController::class, 'index'])->name('tasklist.index');
+    Route::get("/tasklist/create",[TasklistController::class, 'create'])->name('tasklist.create');
+    Route::post('/tasklist/store', [TasklistController::class, 'store'])->name('tasklist.store');
+    Route::get('/tasklist/{tasklist}', [TasklistController::class, 'show'])->name('tasklist.view');
+    Route::get('/tasklist/{tasklist}/edit', [TasklistController::class, 'edit'])->name('tasklist.edit');
+    Route::get('/tasklist/{tasklist}/delete', [TasklistController::class, 'destroy'])->name('tasklist.delete');
+    Route::put('/tasklist/{tasklist}', [TasklistController::class, 'update'])->name('tasklist.update');
 });
