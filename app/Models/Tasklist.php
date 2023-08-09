@@ -13,4 +13,9 @@ class Tasklist extends Model
         'name',
         'desc',
     ];
+
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
