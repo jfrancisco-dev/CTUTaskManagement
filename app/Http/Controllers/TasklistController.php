@@ -53,18 +53,18 @@ class TasklistController extends Controller
     }
 
     public function update(Request $request, $id) {
-        $user = User::findOrFail($id);
+        $tasklist = Tasklist::findOrFail($id);
 
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $id,
+            'desc' => 'required|string|max:255', . $id,
         ]);
 
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
+        $tasklist->name = $request->input('name');
+        $tasklist->desc = $request->input('desc');
 
-        $user->save();
+        $tasklist->save();
 
-        return redirect()->route('user.index')->with('success', 'User information updated successfully.');
+        return redirect()->route('tasklist.index')->with('success', 'User information updated successfully.');
     }
 }
