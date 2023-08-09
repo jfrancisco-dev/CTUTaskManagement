@@ -27,5 +27,8 @@
             @endforeach
         </tbody>
     </table>
+    <div>
+        <a href= "{{route('user.create')}}"><button>Add New User</button></a>
+    </div>
 </div>
 @endsection

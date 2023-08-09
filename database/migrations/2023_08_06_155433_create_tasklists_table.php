@@ -15,7 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('desc');
+            $table->unsignedBigInteger('tasklist_id');
             $table->timestamps();
+
+            $table->foreign('tasklist_id')->references('id')->on('users');
         });
     }
 
