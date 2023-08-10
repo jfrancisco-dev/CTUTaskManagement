@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tasklist extends Model
+class Task extends Model
 {
     use HasFactory;
 
@@ -14,12 +14,8 @@ class Tasklist extends Model
         'desc',
     ];
 
-    public function users()
+    public function tasklists()
     {
-        return $this->belongsTo(User::class);
-    }
-
-    public function tasks() {
-        return $this->hasMany(Task::class);
+        return $this->belongsTo(Tasklist::class);
     }
 }

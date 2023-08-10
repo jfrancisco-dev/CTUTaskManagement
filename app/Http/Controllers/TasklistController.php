@@ -49,7 +49,7 @@ class TasklistController extends Controller
         $tasklist = Tasklist::findOrFail($id);
         $tasklist -> delete();
 
-        return redirect()->route('tasklist.index')->with('success', 'User information updated successfully.');
+        return redirect()->route('tasklist.index')->with('success', 'Tasklist information updated successfully.');
     }
 
     public function update(Request $request, $id) {
@@ -57,7 +57,7 @@ class TasklistController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:255',
-            'desc' => 'required|string|max:255', . $id,
+            'desc' => 'required|string|max:255' . $id,
         ]);
 
         $tasklist->name = $request->input('name');
@@ -65,6 +65,6 @@ class TasklistController extends Controller
 
         $tasklist->save();
 
-        return redirect()->route('tasklist.index')->with('success', 'User information updated successfully.');
+        return redirect()->route('tasklist.index')->with('success', 'Tasklist information updated successfully.');
     }
 }
