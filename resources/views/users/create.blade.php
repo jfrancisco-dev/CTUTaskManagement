@@ -40,7 +40,7 @@
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                         </div>
 
-                        <div class="mb-0">
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
                             <a href="{{ route('user.index') }}" class="btn btn-secondary">{{ __('Back') }}</a>
                         </div>

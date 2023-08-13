@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Tasklist;
 
 class TasklistController extends Controller
 {
     public function index() {
-        $tasklists = Tasklist::all();
+        $user = Auth::user();
+        $tasklists = $user->tasklists()->paginate(5);
         return view('tasklists.index', compact('tasklists'));
     }
 
@@ -66,5 +68,11 @@ class TasklistController extends Controller
         $tasklist->save();
 
         return redirect()->route('tasklist.index')->with('success', 'Tasklist information updated successfully.');
+    }
+
+    public function softDeleteTasklist($user_id)
+    {
+        $tasklist = Tasklist::find($user_id);
+        $tasklist->delete();
     }
 }

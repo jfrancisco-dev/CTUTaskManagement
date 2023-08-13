@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('content')
@@ -20,6 +19,6 @@
             </tr>
         </tbody>
     </table>
-    <a href= "{{route('user.index')}}"><button>Back</button></a>
+    <a href="{{ route('user.index') }}" class="btn btn-secondary">Back</a>
 </div>
 @endsection
