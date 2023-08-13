@@ -2,7 +2,10 @@
 
 @section('content')
 <div class="container">
-    <h2>User List</h2>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>User List</h2>
+        <a href="{{ route('user.create') }}" class="btn btn-primary">Add New User</a>
+    </div>
     <table class="table table-bordered text-center">
         <thead>
             <tr>
@@ -19,16 +22,16 @@
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
                 <td>
-                    <a href="{{route('user.view', ['user' => $user])}}"><button>View</button></a>
-                    <a href="{{route('user.edit', ['user' => $user])}}"><button>Edit</button></a>
-                    <a href="{{route('user.delete', ['user' => $user])}}"><button>Delete</button></a>
+                    <a href="{{ route('user.view', ['user' => $user]) }}" class="btn btn-info">View</a>
+                    <a href="{{ route('user.edit', ['user' => $user]) }}" class="btn btn-warning">Edit</a>
+                    <a href="{{ route('user.delete', ['user' => $user]) }}" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
-    <div>
-        <a href= "{{route('user.create')}}"><button>Add New User</button></a>
+    <div class="d-flex justify-content-center">
+        {{ $users->links('pagination::bootstrap-4') }}
     </div>
 </div>
 @endsection

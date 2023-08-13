@@ -2,7 +2,10 @@
 
 @section('content')
 <div class="container">
-    <h2>Tasklist</h2>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Tasklist</h2>
+        <a href="{{ route('tasklist.create') }}" class="btn btn-primary">Add New Tasklist</a>
+    </div>
     <table class="table table-bordered text-center">
         <thead>
             <tr>
@@ -19,16 +22,16 @@
                 <td>{{ $tasklist->name }}</td>
                 <td>{{ $tasklist->desc }}</td>
                 <td>
-                    <a href="{{route('tasklist.view', ['tasklist' => $tasklist])}}"><button>View</button></a>
-                    <a href="{{route('tasklist.edit', ['tasklist' => $tasklist])}}"><button>Edit</button></a>
-                    <a href="{{route('tasklist.delete', ['tasklist' => $tasklist])}}"><button>Delete</button></a>
+                    <a href="{{ route('tasklist.view', ['tasklist' => $tasklist->id]) }}" class="btn btn-info">View</a>
+                    <a href="{{ route('tasklist.edit', ['tasklist' => $tasklist->id]) }}" class="btn btn-warning">Edit</a>
+                    <a href="{{ route('tasklist.delete', ['tasklist' => $tasklist->id]) }}" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
-    <div>
-        <a href= "{{route('tasklist.create')}}"><button>Add New Tasklist</button></a>
+    <div class="d-flex justify-content-center">
+        {{ $tasklists->links('pagination::bootstrap-4') }}
     </div>
 </div>
 @endsection

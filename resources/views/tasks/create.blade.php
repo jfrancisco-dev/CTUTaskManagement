@@ -21,13 +21,13 @@
 
                         <div class="mb-3">
                             <label for="desc" class="form-label">{{ __('Description') }}</label>
-                            <input id="desc" type="text" class="form-control @error('desc') is-invalid @enderror" name="desc" value="{{ old('desc') }}" required autocomplete="desc" autofocus>
+                            <textarea id="desc" class="form-control @error('desc') is-invalid @enderror" name="desc" required autocomplete="desc" autofocus>{{ old('desc') }}</textarea>
                             @error('desc')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
 
-                        <div class="mb-0">
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
                             <a href="{{ route('task.index') }}" class="btn btn-secondary">{{ __('Back') }}</a>
                         </div>

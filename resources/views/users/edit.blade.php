@@ -7,19 +7,25 @@
         @csrf
         @method('PUT')
 
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" name="name" id="name" class="form-control" value="{{ $user->name }}">
+        <div class="mb-3">
+            <label for="name" class="form-label">{{ __('Name') }}</label>
+            <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ $user->name }}" required autocomplete="name" autofocus>
+            @error('name')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
 
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" class="form-control" value="{{ $user->email }}">
+        <div class="mb-3">
+            <label for="email" class="form-label">{{ __('Email') }}</label>
+            <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ $user->email }}" required autocomplete="email">
+            @error('email')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
 
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">Save Changes</button>
-            <a href="{{ route('user.index') }}" class="btn btn-secondary">Cancel</a>
+        <div class="d-flex justify-content-start">
+            <button type="submit" class="btn btn-primary">{{ __('Save Changes') }}</button>
+            <a href="{{ route('user.index') }}" class="btn btn-secondary">{{ __('Cancel') }}</a>
         </div>
     </form>
 </div>
