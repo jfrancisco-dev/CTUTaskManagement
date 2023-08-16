@@ -8,9 +8,22 @@ use App\Models\Tasklist;
 
 class TasklistController extends Controller
 {
-    public function index() {
+    public function index(Request $request) {
         $user = Auth::user();
-        $tasklists = $user->tasklists()->paginate(5);
+        $searchQuery = $request->get('search');
+        
+        if ($searchQuery) {
+            $tasklists = Tasklist::where('user_id', $user->id)
+                         ->where('name', 'like', '%' . $searchQuery . '%')
+                         ->whereNull('deleted_at') 
+                         ->paginate(5)
+                         ->appends(['search' => $searchQuery]);
+        } else {
+            $tasklists = $user->tasklists()
+                              ->whereNull('deleted_at')
+                              ->paginate(5);
+        }
+        
         return view('tasklists.index', compact('tasklists'));
     }
 

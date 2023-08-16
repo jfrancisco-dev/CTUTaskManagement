@@ -1,25 +1,29 @@
-@extends('layouts.app')
-
-@section('sidebar')
-<div class="col-md-4">
-    <div class="card">
-        <div class="card-header">
-            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-expanded="true" aria-controls="sidebarMenu">
-                {{ ('Menu') }}
-            </button>
-        </div>
-
-        <div class="collapse show" id="sidebarMenu">
-            <div class="card-body">
-                <ul class="list-group">
-                    <li class="list-group-item"><a href="">Dashboard</a></li>
-                    <li class="list-group-item"><a href="">Tasklists</a></li>
-                    <li class="list-group-item"><a href="">Tasks</a></li>
-                    <li class="list-group-item"><a href="{{route('user.index')}}">Users</a></li>
-                    <li class="list-group-item"><a href="">Language</a></li>
-                </ul>
-            </div>
-        </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse border" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link toggle-sidebar">
+                    <i class="fa fa-bars"></i>
+                    <span class="text">Menu</span>
+                </a>
+            </li>
+        </ul>
     </div>
+</nav>
+
+<div class="sidebar">
+    <ul class="nav flex-column">
+        <li class="nav-item border">
+            <a class="nav-link" href="{{route('home')}}"><i class="fa fa-home"></i> Home</a>
+        </li>
+        <li class="nav-item border">
+            <a class="nav-link" href="{{route('tasklist.index')}}"><i class="fa fa-list"></i> Tasklists</a>
+        </li>
+        <li class="nav-item border">
+            <a class="nav-link" href="{{route('task.index')}}"><i class="fa fa-tasks"></i> Tasks</a>
+        </li>
+        <li class="nav-item border">
+            <a class="nav-link" href="{{route('user.index')}}"><i class="fa fa-users"></i> Users</a>
+        </li>
+    </ul>
 </div>
-@endsection

@@ -35,6 +35,7 @@ Route::middleware(['auth'])->group(function() {
     Route::put('/user/{user}', [UserController::class, 'update'])->name('user.update');
     Route::get('/user/{user}/delete', [UserController::class, 'destroy'])->name('user.delete');
     Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
+    Route::get('/user/search', [UserController::class, 'search'])->name('user.search');
 
     //routes for tasklist
     Route::get('/tasklist', [TasklistController::class, 'index'])->name('tasklist.index');
@@ -44,6 +45,7 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/tasklist/{tasklist}/edit', [TasklistController::class, 'edit'])->name('tasklist.edit');
     Route::get('/tasklist/{tasklist}/delete', [TasklistController::class, 'destroy'])->name('tasklist.delete');
     Route::put('/tasklist/{tasklist}', [TasklistController::class, 'update'])->name('tasklist.update');
+    Route::get('/tasklist/search', [TasklistController::class, 'search'])->name('tasklist.search');
 
     //routes for taskl
     Route::get('/task', [TaskController::class, 'index'])->name('task.index');
@@ -53,4 +55,5 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/task/{task}/edit', [TaskController::class, 'edit'])->name('task.edit');
     Route::get('/task/{task}/delete', [TaskController::class, 'destroy'])->name('task.delete');
     Route::put('/task/{task}', [TaskController::class, 'update'])->name('task.update');
+    Route::get('/user/task', [TaskController::class, 'search'])->name('task.search');
 });
