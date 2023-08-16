@@ -9,12 +9,24 @@ use App\Models\Task;
 
 class TaskController extends Controller
 {
-    public function index()
-    {
+    public function index(Request $request) {
         $user = Auth::user();
-        $tasks = Task::whereIn('tasklist_id', $user->tasklists->pluck('id'))->paginate(5);
+        $searchQuery = $request->get('search');
+    
+        if ($searchQuery) {
+            $tasks = Task::where('tasklist_id', $user->id) // Use 'tasklist_id'
+                         ->where('name', 'like', '%' . $searchQuery . '%')
+                         ->whereNull('deleted_at') 
+                         ->paginate(5)
+                         ->appends(['search' => $searchQuery]);
+        } else {
+            $tasks = $user->tasks()
+                        ->whereNull('deleted_at')
+                        ->paginate(5);
+        }
+        
         return view('tasks.index', compact('tasks'));
-    }
+    }    
     
     public function create() {
         return view('tasks.create');
