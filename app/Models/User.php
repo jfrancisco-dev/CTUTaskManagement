@@ -49,7 +49,8 @@ class User extends Authenticatable
         return $this->hasMany(Tasklist::class);
     }
 
-    public function tasks() {
+    public function tasks()
+    {
         return $this->hasMany(Task::class, 'tasklist_id');
-    }    
+    }   
 }

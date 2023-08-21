@@ -3,22 +3,20 @@
 @section('content')
 <div class="container">
     <h2>User Details</h2>
-    <table class="table table-bordered text-center">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>User's Name</th>
-                <th>Email</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>{{ $user->id }}</td>
-                <td>{{ $user->name }}</td>
-                <td>{{ $user->email }}</td>
-            </tr>
-        </tbody>
-    </table>
-    <a href="{{ route('user.index') }}" class="btn btn-secondary">Back</a>
+    <div class="border p-4 mb-2">
+        <div class="form-group">
+            <label for="id">ID:</label>
+            <input type="text" class="form-control" id="id" name="id" value="{{ $user->id }}" disabled>
+        </div>
+        <div class="form-group">
+            <label for="name">User's Name:</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}" disabled>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}" disabled>
+        </div>
+        <a href="{{ route('user.index') }}" class="btn btn-secondary">Back</a>
+    </div>
 </div>
 @endsection

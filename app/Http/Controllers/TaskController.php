@@ -14,17 +14,21 @@ class TaskController extends Controller
         $searchQuery = $request->get('search');
     
         if ($searchQuery) {
-            $tasks = Task::where('tasklist_id', $user->id) // Use 'tasklist_id'
-                         ->where('name', 'like', '%' . $searchQuery . '%')
-                         ->whereNull('deleted_at') 
-                         ->paginate(5)
-                         ->appends(['search' => $searchQuery]);
+            $tasks = Task::whereHas('tasklist', function ($query) use ($user) {
+                $query->where('user_id', $user->id);
+            })
+            ->where('name', 'like', '%' . $searchQuery . '%')
+            ->whereNull('deleted_at')
+            ->paginate(5)
+            ->appends(['search' => $searchQuery]);
         } else {
-            $tasks = $user->tasks()
-                        ->whereNull('deleted_at')
-                        ->paginate(5);
+            $tasks = Task::whereHas('tasklist', function ($query) use ($user) {
+                $query->where('user_id', $user->id);
+            })
+            ->whereNull('deleted_at')
+            ->paginate(5);
         }
-        
+    
         return view('tasks.index', compact('tasks'));
     }    
     
