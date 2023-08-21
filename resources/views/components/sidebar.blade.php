@@ -4,7 +4,7 @@
              style="background-color: #007bff; width: 50px; height: 50px; display: flex; justify-content: center; align-items: center; font-size: 24px; color: #ffffff; border-radius: 50%;">
             {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
         </div>
-        {{ Auth::user()->name }}
+        <span style="font-weight: bold;">{{ Auth::user()->name }}</span>
     </div>
     
     <nav class="navbar navbar-expand-lg navbar-light bg-light mt-2">
@@ -23,72 +23,82 @@
         </div>
     </nav>
 
-    <div class="sidebar nav flex-column">
-        <li class="nav-item border">
-            <a class="nav-link" href="{{ route('home') }}">
-                <i class="fa fa-home"></i> Home
-            </a>
-        </li>
+    <div class="sidebar nav flex-column mt-2">
+        <ul class="list-unstyled">
+            <li class="nav-item border-0">
+                <a class="nav-link" href="{{ route('home') }}">
+                    <i class="fa fa-home"></i> Home
+                </a>
+            </li>
 
-        <li class="nav-item border">
-            <div class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#tasklistsDrawer">
-                <i class="fa fa-list"></i> Tasklists
-            </div>
-            <ul id="tasklistsDrawer" class="sub-nav collapse">
-                <li class="sub-nav-item"><a href="{{ route('tasklist.index') }}">All Tasklists</a></li>
-                <li class="sub-nav-item"><a href="{{ route('tasklist.create') }}">Create Tasklist</a></li>
-            </ul>
-        </li>
-
-        <li class="nav-item border">
-            <div class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#tasksDrawer">
-                <i class="fa fa-tasks"></i> Tasks
-            </div>
-            <ul id="tasksDrawer" class="sub-nav collapse">
-                <li class="sub-nav-item"><a href="{{ route('task.index') }}">All Tasks</a></li>
-                <li class="sub-nav-item"><a href="{{ route('task.create') }}">Create Task</a></li>
-            </ul>
-        </li>
-
-        <li class="nav-item border">
-            <div class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#usersDrawer">
-                <i class="fa fa-users"></i> Users
-            </div>
-            <ul id="usersDrawer" class="sub-nav collapse">
-                <li class="sub-nav-item"><a href="{{ route('user.index') }}">All Users</a></li>
-                <li class="sub-nav-item"><a href="{{ route('user.create') }}">Create User</a></li>
-            </ul>
-        </li>
-
-        <ul class="nav border">
-            <li class="nav-item ">
-                <div class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#languageDrawer">
-                    <i class="fa fa-globe"></i> Language
+            <li class="nav-item border-0">
+                <a class="nav-link" data-bs-toggle="collapse" href="#tasklistsDrawer">
+                    <i class="fa fa-list"></i> Tasklists
+                </a>
+                <div class="collapse" id="tasklistsDrawer">
+                    <ul class="sub-nav list-unstyled" style="background-color: #ffffff; padding-left: 20px;">
+                        <li class="sub-nav-item"><a href="{{ route('tasklist.index') }}" style="text-decoration: none;">All Tasklists</a></li>
+                        <li class="sub-nav-item"><a href="{{ route('tasklist.create') }}" style="text-decoration: none;">Create Tasklist</a></li>
+                    </ul>
                 </div>
-                <ul id="languageDrawer" class="sub-nav collapse">
-                    <li class="sub-nav-item"><a href="#">English</a></li>
-                    <li class="sub-nav-item"><a href="#">Japanese</a></li>
-                </ul>
+            </li>
+
+            <li class="nav-item border-0">
+                <a class="nav-link" data-bs-toggle="collapse" href="#tasksDrawer">
+                    <i class="fa fa-tasks"></i> Tasks
+                </a>
+                <div class="collapse" id="tasksDrawer">
+                    <ul class="sub-nav list-unstyled" style="background-color: #ffffff; padding-left: 20px;">
+                        <li class="sub-nav-item"><a href="{{ route('task.index') }}" style="text-decoration: none;">All Tasks</a></li>
+                        <li class="sub-nav-item"><a href="{{ route('task.create') }}" style="text-decoration: none;">Create Task</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="nav-item border-0">
+                <a class="nav-link" data-bs-toggle="collapse" href="#usersDrawer">
+                    <i class="fa fa-users"></i> Users
+                </a>
+                <div class="collapse" id="usersDrawer">
+                    <ul class="sub-nav list-unstyled" style="background-color: #ffffff; padding-left: 20px;">
+                        <li class="sub-nav-item"><a href="{{ route('user.index') }}" style="text-decoration: none;">All Users</a></li>
+                        <li class="sub-nav-item"><a href="{{ route('user.create') }}" style="text-decoration: none;">Create User</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="nav-item border-0">
+                <a class="nav-link" data-bs-toggle="collapse" href="#languageDrawer">
+                    <i class="fa fa-globe"></i> Language
+                </a>
+                <div class="collapse" id="languageDrawer">
+                    <ul class="sub-nav list-unstyled" style="background-color: #ffffff; padding-left: 20px;">
+                        <li class="sub-nav-item"><a href="#" style="text-decoration: none;">English</a></li>
+                        <li class="sub-nav-item"><a href="#" style="text-decoration: none;">Japanese</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="nav-item border-0">
+                <a class="nav-link" data-bs-toggle="collapse" href="#profileDrawer">
+                    <i class="fa fa-user"></i> Profile
+                </a>
+                <div class="collapse" id="profileDrawer">
+                    <ul class="sub-nav list-unstyled" style="background-color: #ffffff; padding-left: 20px;">
+                        <li class="sub-nav-item"><a href="{{route('profile.show')}}" style="text-decoration: none;">View Profile</a></li>
+                        <li class="sub-nav-item"><a href="{{route('profile.edit')}}" style="text-decoration: none;">Update Profile</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="nav-item border-0 mb-4">
+                <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class="fa fa-sign-out-alt"></i> {{ __('Logout') }}
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
             </li>
         </ul>
-
-        <li class="nav-item border">
-            <div class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#profileDrawer">
-                <i class="fa fa-user"></i> Profile
-            </div>
-            <ul id="profileDrawer" class="sub-nav collapse">
-                <li class="sub-nav-item"><a href="#">View Profile</a></li>
-                <li class="sub-nav-item"><a href="#">Edit Profile</a></li>
-            </ul>
-        </li>
-
-        <li class="nav-item border mb-4">
-            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                <i class="fa fa-sign-out-alt"></i> {{ __('Logout') }}
-            </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
-            </form>
-        </li>
     </div>
 </div>

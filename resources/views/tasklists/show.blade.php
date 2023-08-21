@@ -3,22 +3,20 @@
 @section('content')
 <div class="container">
     <h2>Tasklist Details</h2>
-    <table class="table table-bordered text-center">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Tasklist's Name</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>{{ $tasklist->id }}</td>
-                <td>{{ $tasklist->name }}</td>
-                <td>{{ $tasklist->desc }}</td>
-            </tr>
-        </tbody>
-    </table>
-    <a href="{{ route('tasklist.index') }}" class="btn btn-secondary">Back</a>
+    <div class="border p-4 mb-2">
+        <div class="form-group">
+            <label for="id">ID:</label>
+            <input type="text" class="form-control" id="id" name="id" value="{{ $tasklist->id }}" disabled>
+        </div>
+        <div class="form-group">
+            <label for="name">Tasklist's Name:</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ $tasklist->name }}" disabled>
+        </div>
+        <div class="form-group">
+            <label for="desc">Description:</label>
+            <input type="text" class="form-control" id="desc" name="desc" value="{{ $tasklist->desc }}" disabled>
+        </div>
+        <a href="{{ route('tasklist.index') }}" class="btn btn-secondary">Back</a>
+    </div>
 </div>
 @endsection

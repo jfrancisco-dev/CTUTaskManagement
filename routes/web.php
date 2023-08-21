@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TasklistController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,4 +57,9 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/task/{task}/delete', [TaskController::class, 'destroy'])->name('task.delete');
     Route::put('/task/{task}', [TaskController::class, 'update'])->name('task.update');
     Route::get('/user/task', [TaskController::class, 'search'])->name('task.search');
+
+    //routes for profile
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::get('/profile/update', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 });

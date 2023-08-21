@@ -16,9 +16,9 @@ class Task extends Model
         'desc',
     ];
 
-    public function tasklists()
+    public function tasklist()
     {
-        return $this->belongsTo(Tasklist::class);
+        return $this->belongsTo(Tasklist::class, 'tasklist_id'); 
     }
     
     public function users()
